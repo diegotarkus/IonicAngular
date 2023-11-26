@@ -1,0 +1,87 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-title>Registro</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="register-page">
+  <div class="register-container">
+    <ion-card class="register-card">
+      <ion-card-header class="register-card-header">
+        <ion-card-title class="app-register">Por favor, ingresa tus datos:</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-card-content>
+      <div (ngSubmit)="guardar()" class="register-form">
+
+        <ion-item class="register-input">
+          <ion-icon name="id-card" slot="start"></ion-icon>
+          <ion-label position="floating">Rut:</ion-label>
+          <ion-input [(ngModel)]="rut" maxlength="9"></ion-input>
+        </ion-item>
+        <ion-item class="register-input">
+          <ion-icon name="people" slot="start"></ion-icon>
+          <ion-label position="floating">Nombre:</ion-label>
+          <ion-input [(ngModel)]="nombre" maxlength="20"></ion-input>
+        </ion-item>
+        <ion-item class="register-input">
+          <ion-icon name="people" slot="start"></ion-icon>
+          <ion-label position="floating">Apellido:</ion-label>
+          <ion-input [(ngModel)]="apellido" maxlength="20"></ion-input>
+        </ion-item>
+        <ion-item class="register-input">
+          <ion-icon name="mail" slot="start"></ion-icon>
+          <ion-label position="floating">Correo:</ion-label>
+          <ion-input [(ngModel)]="email" type="email" maxlength="50"></ion-input>
+        </ion-item>
+        <ion-item class="register-input">
+          <ion-icon name="book" slot="start"></ion-icon>
+          <ion-label position="floating">Carrera:</ion-label>
+          <ion-input [(ngModel)]="carrera" maxlength="100"></ion-input>
+        </ion-item>
+        <ion-list>
+          <ion-item>
+            <ion-icon name="pin" slot="start"></ion-icon>
+            <ion-select (ionChange)="cargarComuna()" placeholder="Seleccione región" [(ngModel)]="regionSeleccionada">
+              <ion-select-option [value]="i.id" *ngFor="let i of regiones">{{i.nombre}}</ion-select-option>
+            </ion-select> 
+          </ion-item>
+        </ion-list>    
+        <ion-list>
+          <ion-item>
+            <ion-icon name="pin" slot="start"></ion-icon>
+            <ion-select placeholder="Seleccione comuna" [(ngModel)]="comunaSeleccionada">
+              <ion-select-option [value]="i.id" *ngFor="let i of comunas">{{i.nombre}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <ion-item class="register-input">
+          <ion-icon name="person" slot="start"></ion-icon>
+          <ion-label position="floating">Nombre de usuario:</ion-label>
+          <ion-input [(ngModel)]="username" maxlength="8"></ion-input>
+          <ion-note color="primary" font-size="large">Máximo 8 carácteres.</ion-note>
+        </ion-item>
+        <ion-item class="register-input">
+          <ion-icon name="key" slot="start"></ion-icon>
+          <ion-label position="floating">Contraseña:</ion-label>
+          <ion-input [(ngModel)]="password" type="password" maxlength="4"></ion-input>
+          <ion-note color="primary" size="medium">La contraseña debe ser de 4 dígitos.</ion-note>
+        </ion-item>
+        <ion-item class="registration-input">
+          <ion-icon name="key" slot="start"></ion-icon>
+          <ion-label position="floating">Confirmar contraseña</ion-label>
+          <ion-input [(ngModel)]="confirmPassword" type="password" maxlength="4"></ion-input>
+        </ion-item>
+        <ion-card>
+          <ion-button (click)="guardar()" class="register-button" expand="full" shape="round" fill="solid">
+            Registrar
+          </ion-button>
+        </ion-card>
+      </div>  
+    </ion-card-content>
+  </div>
+</ion-content>

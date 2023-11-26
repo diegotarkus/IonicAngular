@@ -1,0 +1,55 @@
+<ion-header [translucent]="true" class="custom-header">
+  <ion-toolbar>
+    <ion-title class="app-title">RegistrAPP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="login-page">
+    <ion-card class="login-card">
+      <ion-card-header class="login-header">
+        <ion-card-title class="login-title">Iniciar sesión</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          <ion-item class="login-logo">
+            <ion-img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Logo_DuocUC.svg" class="logo-chico" alt="Login logo"></ion-img>
+          </ion-item>
+          <ion-item>  
+            <ion-label class="login-label">
+              <h1>Bienvenido!</h1>
+              <h2>Por favor, ingresa tus credenciales:</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="person" slot="start"></ion-icon>
+            <ion-label class="login-user" position="floating">Nombre de usuario:</ion-label>
+            <ion-input [(ngModel)]="username" class="login-field input-field" pattern="^[a-zA-Z0-9]{3,8}$" 
+              title="El nombre de usuario debe contener entre 3 y 8 caracteres alfanuméricos."
+              minlength="3" maxlength="8"></ion-input>    
+          </ion-item>
+          
+          <ion-item>
+            <ion-icon name="key" slot="start"></ion-icon>
+            <ion-label class="login-pass" position="floating">Contraseña:</ion-label>
+            <ion-input [(ngModel)]="password" type="password" class="login-field input-field" pattern="^\d{4}$"
+              title="La contraseña debe contener exactamente 4 dígitos numéricos." maxlength="4"></ion-input> 
+          </ion-item>
+        <ion-item> 
+          <ion-button (click)="ingresar()" class="btn btn-primary btn-large btn-block login-button" slot="end" size="default" expand="full" 
+            shape="round" fill="solid">Ingresar</ion-button>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-icon name="person-add" slot="start"></ion-icon>
+          <ion-button [routerLink]="['/register']" size="small" fill="clear" color="primary" size="default">Registrate</ion-button>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="help-circle" slot="start"></ion-icon>
+          <ion-button [routerLink]="['/recuperar-pass']" size="small" fill="clear" color="primary" size="default">¿Olvidaste tu contraseña?</ion-button>
+        </ion-item>
+      </ion-card-content>    
+    </ion-card>      
+</ion-content>

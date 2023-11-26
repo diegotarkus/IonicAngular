@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title slot="end">Escanear QR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="card-qr">
+    <ion-card-content>
+      <video id="videoElement" autoplay width="500" height="500"></video>
+      <div *ngIf="codigoQR">
+        <h1>¡Código QR escaneado!</h1>
+        <p>{{codigoQR}}</p>
+        <div>
+          <h2>Información:</h2>
+          <div *ngIf="user">
+            <p class="bold-text"><strong>Nombre de usuario:</strong> {{user.username}}
+            <p class="bold-text"><strong>Rut:</strong> {{user.rut}}</p>
+            <p class="bold-text"><strong>Nombre:</strong> {{user.nombre}} {{user.apellido}} </p>
+            <p class="bold-text"><strong>Correo:</strong> {{user.email}}</p>
+            <p class="bold-text"><strong>Carrera:</strong> {{user.carrera}}</p>
+            <p class="bold-text"><strong>Región:</strong> {{user.region}}</p>
+            <p class="bold-text"><strong>Comuna:</strong> {{user.comuna}}</p> 
+          </div>         
+        </div>
+        <div *ngIf="localizacion">
+          <h2>Coordenadas:</h2>
+          <p>{{localizacion}}</p>
+        </div>
+        <ion-card>
+          <ion-button (click)="guardarQR()" class="register-button" expand="full" shape="round" fill="solid">
+            Guardar datos
+          </ion-button>
+        </ion-card>
+      </div>     
+    </ion-card-content>
+  </ion-card>
+</ion-content>
